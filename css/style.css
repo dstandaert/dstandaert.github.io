@@ -16,7 +16,8 @@ canvas {
   display: block; }
 
 .c-hero {
-  position: relative; }
+  position: relative;
+  overflow: hidden; }
 
 .c-hero__title {
   width: 500px;
