@@ -1,3 +1,5 @@
+// Parallax
+
 function Parallax(options){
     options = options || {};
     this.nameSpaces = {
@@ -34,4 +36,46 @@ function Parallax(options){
 
 window.addEventListener('load', function(){
     new Parallax();
+});
+
+
+
+// follow cursor
+
+const circle = document.querySelector(".js-cirle");
+
+let mouseX = 0;
+let mouseY = 0;
+
+let circleX = 0;
+let circleY = 0;
+
+let speed = 0.3;
+
+function animate() {
+  let distX = mouseX - circleX;
+  let distY = mouseY - circleY;
+
+  circleX = circleX + distX * speed;
+  circleY = circleY + distY * speed;
+
+  circle.style.left = circleX + "px";
+  circle.style.top = circleY + "px";
+
+  requestAnimationFrame(animate);
+}
+
+animate();
+
+document.addEventListener("mousemove", function(event) {
+  mouseX = event.pageX;
+  mouseY = event.pageY;
+});
+
+document.addEventListener("mousedown", function(event) {
+  circle.classList.toggle("is-clicked");
+});
+
+document.addEventListener("mouseup", function(event) {
+  circle.classList.toggle("is-clicked");
 });
